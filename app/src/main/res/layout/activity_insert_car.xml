@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_insert_car"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#777777"
+>
+
+
+    <ImageView
+        android:id="@+id/insertCarActivity_ivLogo"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:src="@mipmap/ic_launcher" />
+
+
+    <TextView
+        android:id="@+id/insertCarActivity_tvManager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/insertCarActivity_ivLogo"
+        android:layout_alignTop="@id/insertCarActivity_ivLogo"
+        android:layout_toRightOf="@id/insertCarActivity_ivLogo"
+        android:gravity="center_vertical"
+        android:text="车辆管理"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
+
+
+    <ImageView
+        android:id="@+id/insertCarActivity_ivSave"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+       />
+
+
+    <View
+        android:id="@+id/insertCarActivity_viewLine"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/insertCarActivity_ivLogo"
+        android:background="#33ccff" />
+
+    <TextView
+        android:id="@+id/insertCarActivity_tvNickName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertCarActivity_viewLine"
+        android:layout_margin="10dp"
+        android:text="车名"
+        android:textColor="#DDDDDD"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/insertCarActivity_etNickName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertCarActivity_viewLine"
+        android:layout_toRightOf="@id/insertCarActivity_tvNickName"
+        android:hint="我的小车"
+        android:textColorHint="#FFFFFF" />
+
+
+    <TextView
+        android:id="@+id/insertCarActivity_tvBrand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertCarActivity_tvNickName"
+        android:layout_margin="10dp"
+        android:text="品牌"
+        android:textColor="#DDDDDD"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <Spinner
+        android:id="@+id/insertCarActivity_spinnerBrand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/insertCarActivity_tvBrand"
+        android:layout_alignTop="@id/insertCarActivity_tvBrand"
+        android:layout_toRightOf="@id/insertCarActivity_tvBrand" />
+
+
+    <TextView
+        android:id="@+id/insertCarActivity_tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertCarActivity_tvBrand"
+        android:layout_margin="10dp"
+        android:text="车系"
+        android:textColor="#DDDDDD"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+
+    <Spinner
+        android:id="@+id/insertCarActivity_spinnerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/insertCarActivity_tvName"
+        android:layout_alignTop="@id/insertCarActivity_tvName"
+        android:layout_toRightOf="@id/insertCarActivity_tvName"></Spinner>
+
+
+    <TextView
+        android:id="@+id/insertCarActivity_tvStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertCarActivity_tvName"
+        android:layout_margin="10dp"
+        android:text="车型"
+        android:textColor="#DDDDDD"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/insertCarActivity_spinnerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/insertCarActivity_tvStyle"
+        android:layout_alignTop="@id/insertCarActivity_tvStyle"
+        android:layout_toRightOf="@id/insertCarActivity_tvStyle"></Spinner>
+
+</RelativeLayout>

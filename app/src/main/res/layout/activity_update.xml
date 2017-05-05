@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_update"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#777777"
+>
+
+
+    <ImageView
+        android:id="@+id/activityUpdate_ivBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:src="@mipmap/ic_launcher" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/activityUpdate_ivBack"
+        android:layout_alignTop="@id/activityUpdate_ivBack"
+        android:layout_toRightOf="@id/activityUpdate_ivBack"
+        android:gravity="center"
+        android:text="车辆管理"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
+
+
+    <ImageView
+        android:src="@drawable/ic_match"
+        android:id="@+id/activityUpdate_ivSave"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        />
+
+
+    <ImageView
+        android:src="@mipmap/action_delete"
+        android:id="@+id/activityUpdate_ivDelete"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@id/activityUpdate_ivSave"
+         />
+
+    <View
+        android:id="@+id/activityUpdate_viewLine"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/activityUpdate_ivBack"
+        android:background="#33CCFF" />
+
+
+    <TextView
+        android:id="@+id/activityUpdate_tvNickName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activityUpdate_viewLine"
+        android:layout_margin="15dp"
+        android:text="车名"
+        android:textColor="#DDDDDD"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/activityUpdate_tvBrand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activityUpdate_etNickName"
+        android:layout_margin="15dp"
+        android:text="品牌"
+        android:textColor="#DDDDDD"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/activityUpdate_tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activityUpdate_tvBrand"
+        android:layout_margin="15dp"
+        android:text="车系"
+        android:textColor="#DDDDDD"
+        android:textSize="16sp" />
+
+
+    <Spinner
+        android:layout_centerHorizontal="true"
+        android:id="@+id/activityUpdate_spinnerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/activityUpdate_tvName"
+        android:layout_toRightOf="@id/activityUpdate_tvName"></Spinner>
+
+
+    <TextView
+        android:id="@+id/activityUpdate_tvStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activityUpdate_tvName"
+        android:layout_margin="15dp"
+        android:text="车型"
+        android:textColor="#DDDDDD"
+        android:textSize="16sp" />
+
+
+    <Spinner
+        android:id="@+id/activityUpdate_spinnerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/activityUpdate_tvStyle"
+        android:layout_toRightOf="@id/activityUpdate_tvStyle"></Spinner>
+
+
+    <Spinner
+        android:id="@+id/activityUpdate_spinnerBrand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/activityUpdate_tvBrand"
+        android:layout_alignTop="@id/activityUpdate_tvBrand"
+        android:layout_alignEnd="@id/activityUpdate_ivSave"/>
+    <LinearLayout
+        android:id="@+id/activityUpdate_llDitail"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/activityUpdate_ivBack">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#b9b9b9">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="发动机"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/activityUpdate_btnLeft"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="5dp"
+                android:background="#696969"
+                android:gravity="center"
+                android:textColor="#b9b9b9" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#b9b9b9">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="变速箱"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/activityUpdate_btnRight"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="5dp"
+                android:background="#696969"
+                android:gravity="center"
+                android:textColor="#b9b9b9" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_toRightOf="@id/activityUpdate_tvStyle"
+        android:id="@+id/activityUpdate_etNickName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:layout_below="@+id/activityUpdate_ivBack"
+         />
+
+
+</RelativeLayout>

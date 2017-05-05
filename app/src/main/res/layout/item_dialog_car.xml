@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+<TextView
+    android:gravity="center_vertical"
+    android:text="车辆管理  "
+    android:textSize="24sp"
+    android:id="@+id/tv_listview_add"
+    android:layout_width="0dp"
+    android:layout_weight="8.93"
+    android:layout_height="40dp"/>
+    <ImageView
+        android:id="@+id/delte"
+        android:src="@drawable/ic_match"
+        android:layout_gravity="end"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="40dp"/>
+</LinearLayout>

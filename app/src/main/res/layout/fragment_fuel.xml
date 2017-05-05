@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.dllo.blevel.fragment.FuelFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/last_iv"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:layout_weight="2"
+            android:src="@mipmap/ic_redirector_left_normal" />
+
+        <TextView
+            android:id="@+id/cross_tv"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="6"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/next_iv"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="2"
+            android:gravity="end"
+            android:src="@mipmap/ic_redirector_right_normal" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/middle_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_layout">
+
+        <com.example.dllo.blevel.LinearSelfView
+            android:id="@+id/selfView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:id="@+id/next_layout"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/middle_layout">
+        <TextView
+            android:gravity="center"
+            android:text="我的小车"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/next_layout"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fuel"
+            android:layout_marginTop="2dp"
+            android:text="最高油耗:  升/百公里          当前行程:  公里 " />
+
+        <TextView
+            android:id="@+id/hell0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/yes"
+            android:layout_marginTop="2dp"
+            android:text="最低油耗:  升/百公里          当前行程:  升 " />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hell0"
+            android:layout_marginTop="2dp"
+            android:text="最近油耗:  升/百公里          当前行程:  公里/天 " />
+
+        <TextView
+
+            android:id="@+id/fuel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="平均油耗:  升/百公里          当前行程:  公里 "
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
