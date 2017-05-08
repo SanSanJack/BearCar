@@ -48,25 +48,26 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends BaseActivity {
 
-    private Context context;
+
     private TablayoutAdapter adapter;
     private ArrayList<Fragment> fragments;
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private HashMap<Double, Double> map;
-    private ImageView sign, iconOne;
+    private ImageView sign, iconOne,share;
     private DrawerLayout drawerLayout;
     private com.example.dllo.blevel.view.leftPullView leftPullView;
     private boolean IS_CLICk = false;
     private LinearLayout right;
     private LinearLayout left;
     private int position;
+    private Context context;
     private TextView rightCircler, crossLiptTv;
     private PopupWindow popuwindow;
     private poPuWindowListAdapter poPuWindowListAdapter;
     private ListView listView, addListView;
     private DialogListViewAdapter dialogListViewAdapter;
-    private ImageView addIV;
+    private ImageView addIV;                                //
 
 
     @Override
@@ -84,7 +85,7 @@ public class MainActivity extends BaseActivity {
         sign = (ImageView) findViewById(R.id.jackson);
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-
+        share = (ImageView) findViewById(R.id.share_iv);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawlayout);
         rightCircler = (TextView) findViewById(R.id.spinner);
         left = (LinearLayout) findViewById(R.id.left);
@@ -125,7 +126,6 @@ public class MainActivity extends BaseActivity {
             bearCarEntity1.setName("我的小车");
             DataBaseTool.getInstance().addCar(bearCarEntity1);
             DataBaseTool.getInstance().changeSelectedCar(bearCarEntity1);
-
             rightCircler.setText(DataBaseTool.getInstance().querySelectedCar().getName());
 
         }
@@ -138,6 +138,7 @@ public class MainActivity extends BaseActivity {
         sign.setOnClickListener(this);
         rightCircler.setOnClickListener(this);
         iconOne.setOnClickListener(this);
+        share.setOnClickListener(this);
 
     }
 
@@ -218,7 +219,6 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onDelClick(BearCarEntity car) {
                 customDialog(car);
-
             }
         });
         dialogListViewAdapter.setDialogListViewAdapter(carEntities);
@@ -295,7 +295,7 @@ public class MainActivity extends BaseActivity {
                 Intent intentCar = new Intent(MainActivity.this, UpdateActivity.class);
                 startActivity(intentCar);
                 break;
-
+            case R.id.share_iv:
         }
     }
 

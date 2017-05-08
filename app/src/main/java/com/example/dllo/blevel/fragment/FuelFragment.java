@@ -143,12 +143,20 @@ public class FuelFragment extends BaseFragment {
                 } else if (count == 3) {
                     setTitles(count);
                     int[] num = new int[]{2, 3, 4};
+                    double x = 1;
+                    double y = 2;
                     ArrayList<Integer> names = new ArrayList();
+                    HashMap<Double,Double> map = new HashMap<Double, Double>();
                     for (int i = 0; i <num.length; i++) {
                         names.add(num[i]);
+                        map.put(x,y);
+                        x++;
+                        y++;
                     }
                     count = 4;
                     sum = 2;
+                    //先传入刻度在传入map值
+                    selfView.setPointMap(map);
                     selfView.setHorizontal(names);
                 } else if (count == 4) {
                     setTitles(count);
