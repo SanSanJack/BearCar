@@ -1,4 +1,4 @@
-package com.example.dllo.blevel.view;
+package com.example.dllo.blevel.sql;
 
 import com.example.dllo.blevel.entity.BearCarEntity;
 
@@ -6,7 +6,6 @@ import java.util.List;
 
 
 /**
- * If the code is not wrong its author is JokerCats.
  */
 
 public interface TableCarOperation {

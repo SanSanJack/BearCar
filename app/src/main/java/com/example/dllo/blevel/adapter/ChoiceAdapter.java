@@ -35,10 +35,10 @@ public class ChoiceAdapter extends BaseAdapter {
 
     }
 
-    public void clear() {
-        this.data.clear();
-        notifyDataSetChanged();
-    }
+//    public void clear() {
+//        this.data.clear();
+//        notifyDataSetChanged();
+//    }
     @Override
     public int getCount() {
       return data.size() + 1;
@@ -85,7 +85,7 @@ public class ChoiceAdapter extends BaseAdapter {
     /**
      *   这个方法确定了spinner下拉方式；
      * @param position
-     * @param convertView
+     * @param convertView //
      * @param parent
      * @return
      */

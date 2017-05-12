@@ -1,4 +1,4 @@
-package com.example.dllo.blevel.view;
+package com.example.dllo.blevel.sql;
 
 import com.example.dllo.blevel.entity.MoneyEntity;
 import com.example.dllo.blevel.entity.RecordsEntity;

@@ -1,4 +1,4 @@
-package com.example.dllo.blevel.view;
+package com.example.dllo.blevel.sql;
 
 import android.content.ContentValues;
 import android.database.Cursor;

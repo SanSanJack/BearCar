@@ -7,23 +7,18 @@ package com.example.dllo.blevel.entity;
  */
 
 public class TempEntity {
-
     private int index;
     private String name;
-
     public int getIndex() {
         return index;
     }
-
     public TempEntity setIndex(int index) {
         this.index = index;
         return this;
     }
-
     public String getName() {
         return name;
     }
-
     public TempEntity setName(String name) {
         this.name = name;
         return this;

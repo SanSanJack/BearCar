@@ -1,7 +1,6 @@
 package com.example.dllo.blevel.entity;
 
 /**
- * If the code is not wrong its author is JokerCats.
  */
 
 public class CarDetailEntity {

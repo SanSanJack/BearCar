@@ -18,8 +18,6 @@ public class ConsumptionFragment extends Fragment {
     public ConsumptionFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

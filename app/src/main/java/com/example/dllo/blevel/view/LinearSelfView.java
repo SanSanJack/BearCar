@@ -1,4 +1,4 @@
-package com.example.dllo.blevel;
+package com.example.dllo.blevel.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.example.dllo.blevel.R;
 import com.example.dllo.blevel.tool.Tools;
 
 import java.util.ArrayList;

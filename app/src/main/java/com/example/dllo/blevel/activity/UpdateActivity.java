@@ -18,7 +18,7 @@ import com.example.dllo.blevel.entity.CarDetail;
 import com.example.dllo.blevel.entity.CarInformationEntity;
 import com.example.dllo.blevel.entity.TempEntity;
 import com.example.dllo.blevel.tool.HttpManager;
-import com.example.dllo.blevel.view.DataBaseTool;
+import com.example.dllo.blevel.sql.DataBaseTool;
 
 import java.util.List;
 
@@ -95,16 +95,14 @@ public class UpdateActivity extends BaseActivity implements AdapterView.OnItemSe
         isSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //将车存到数据库
                 BearCarEntity car = new BearCarEntity(0);
                 car.setName(getCarName.getText().toString());
                 car.setModel(cheXiId);
                 car.getSelected(1);
                 DataBaseTool.getInstance().addCar(car);
+                setResult(202);
                 finish();
-                setResult(RESULT_OK);
-
             }
         });
         //所有车牌的网络请求
@@ -163,7 +161,6 @@ public class UpdateActivity extends BaseActivity implements AdapterView.OnItemSe
                 break;
             case R.id.activityUpdate_spinnerName:
                 seriesId = (int) id;
-           //     seriesAdapter.clear();
                 if (seriesId==0){
                     seriesAdapter.setWhite(true);
                    brandAdapter.setWhite(false);

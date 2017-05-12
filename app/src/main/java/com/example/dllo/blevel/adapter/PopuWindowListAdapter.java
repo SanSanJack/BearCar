@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.example.dllo.blevel.R;
 import com.example.dllo.blevel.entity.BearCarEntity;
-import com.example.dllo.blevel.view.DataBaseTool;
 
 import java.util.List;
 
@@ -17,12 +16,12 @@ import java.util.List;
  * Created by WYL on 2017/4/24.
  */
 
-public class poPuWindowListAdapter extends BaseAdapter {
+public class PopuWindowListAdapter extends BaseAdapter {
 
     private Context context;
     public List<BearCarEntity> carEntities;
 
-    public poPuWindowListAdapter(Context context) {
+    public PopuWindowListAdapter(Context context) {
         this.context = context;
     }
 

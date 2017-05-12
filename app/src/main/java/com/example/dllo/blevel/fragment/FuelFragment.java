@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dllo.blevel.LinearSelfView;
+import com.example.dllo.blevel.view.LinearSelfView;
 import com.example.dllo.blevel.R;
 import com.example.dllo.blevel.base.BaseFragment;
 import com.example.dllo.blevel.entity.CrossLipEntity;
@@ -22,7 +22,7 @@ public class FuelFragment extends BaseFragment {
     private List<CrossLipEntity> crossLips;
     private TextView crossLiptTv;
     private ImageView lastTv, nextTv;
-    private com.example.dllo.blevel.LinearSelfView selfView;
+    private LinearSelfView selfView;
     private HashMap<Double, Double> map;
     private ArrayList<Double> horizontal;
 
@@ -63,7 +63,7 @@ public class FuelFragment extends BaseFragment {
          第六个总长度:纵坐标刻度的长度
          */
 
-        selfView.setView(getContext(),  10, 3, 15, 1, "月份", "油耗", true);
+        selfView.setView(getContext(), 10, 50, 15, 1, "月份", "油耗", true);
         Log.d("MainActivity", "白百合:" + selfView);
         Log.d("MainActivity", "宝蓝:" + map);
     }
@@ -96,8 +96,13 @@ public class FuelFragment extends BaseFragment {
                     setTitles(count);
                     ArrayList<Integer> names = new ArrayList();
                     names.add(2015);
-                    names.add(2015);
+                    names.add(2016);
                     names.add(2017);
+                    HashMap<Double,Double> map = new HashMap<>();
+                    map.put(2.0, 4.0);
+                    map.put(3.4, 4.8);
+                    map.put(4.5, 5.7);
+                    selfView.setPointMap(map);
                     selfView.setHorizontal(names);
                     count = 1;
                     sum = 4;
@@ -161,20 +166,26 @@ public class FuelFragment extends BaseFragment {
                 } else if (count == 4) {
                     setTitles(count);
                     int[] num = new int[]{5, 6, 7, 8, 9, 10, 11, 12, 2017, 2, 3, 4};
-
+                    double x = 1;
+                    double y = 2;
+                    HashMap<Double,Double> map = new HashMap<Double, Double>();
                     ArrayList<Integer> names = new ArrayList();
                     for (int i = 0; i <num.length; i++) {
                         names.add(num[i]);
-                    }count = 0;
-                    sum = 3;
+                        map.put(x,y);
+                        x++;
+                        y++;
+                    }
+                    selfView.setPointMap(map);
                     selfView.setHorizontal(names);
                     Log.d("FuelFragment", "horizontal:" + names);
+                    count = 0;
+                    sum = 3;
                 }
             }
 
         });
         lastTv.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 if (sum == 0) {

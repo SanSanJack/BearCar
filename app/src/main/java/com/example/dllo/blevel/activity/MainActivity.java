@@ -26,25 +26,23 @@ import android.widget.Toast;
 import com.example.dllo.blevel.R;
 import com.example.dllo.blevel.adapter.DialogListViewAdapter;
 import com.example.dllo.blevel.adapter.TablayoutAdapter;
-import com.example.dllo.blevel.adapter.poPuWindowListAdapter;
+import com.example.dllo.blevel.adapter.PopuWindowListAdapter;
 import com.example.dllo.blevel.base.BaseActivity;
 import com.example.dllo.blevel.entity.BearCarEntity;
-import com.example.dllo.blevel.entity.CarInformationEntity;
 import com.example.dllo.blevel.fragment.CoastFragment;
 import com.example.dllo.blevel.fragment.ConsumptionFragment;
 import com.example.dllo.blevel.fragment.FuelFragment;
 import com.example.dllo.blevel.fragment.RankingFragment;
-import com.example.dllo.blevel.view.DataBaseTool;
+import com.example.dllo.blevel.sql.DataBaseTool;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends BaseActivity {
 
@@ -64,15 +62,12 @@ public class MainActivity extends BaseActivity {
     private Context context;
     private TextView rightCircler, crossLiptTv;
     private PopupWindow popuwindow;
-    private poPuWindowListAdapter poPuWindowListAdapter;
+    private PopuWindowListAdapter popuWindowListAdapter;
     private ListView listView, addListView;
     private DialogListViewAdapter dialogListViewAdapter;
-    private ImageView addIV;                                //
-
-
+    private ImageView addIV;
     @Override
     public int setLayout() {
-
         return R.layout.activity_main;
     }
 
@@ -90,9 +85,7 @@ public class MainActivity extends BaseActivity {
         rightCircler = (TextView) findViewById(R.id.spinner);
         left = (LinearLayout) findViewById(R.id.left);
         right = (LinearLayout) findViewById(R.id.right);
-
-        poPuWindowListAdapter = new poPuWindowListAdapter(this);
-
+        popuWindowListAdapter = new PopuWindowListAdapter(this);
         dialogListViewAdapter = new DialogListViewAdapter(MainActivity.this);
     }
 
@@ -105,7 +98,6 @@ public class MainActivity extends BaseActivity {
         fragments.add(new ConsumptionFragment());
         adapter = new TablayoutAdapter(getSupportFragmentManager(), fragments, this);
         viewPager.setAdapter(adapter);
-
         tabLayout.setupWithViewPager(viewPager);
 //        tabLayout.setTabTextColors( "#00FFFF");
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#00FFFF"));
@@ -115,7 +107,7 @@ public class MainActivity extends BaseActivity {
             tab.setCustomView(adapter.getTabview(i));
 
         }
-        BearCarEntity bearCarEntity = DataBaseTool.getInstance().querySelectedCar();
+//        BearCarEntity bearCarEntity = DataBaseTool.getInstance().querySelectedCar();
 //        if (bearCarEntity !=null) {
 //            rightCircler.setText(bearCarEntity.getName());
 //        }else {
@@ -130,7 +122,6 @@ public class MainActivity extends BaseActivity {
 
         }
 
-
     }
 
     @Override
@@ -144,27 +135,27 @@ public class MainActivity extends BaseActivity {
 
     List<BearCarEntity> carEntities = new ArrayList<>();
 
-    public List<BearCarEntity> setCarEntities() {
-        BearCarEntity bearCarEntity = new BearCarEntity(1);
-        bearCarEntity.setName("123");
-        bearCarEntity.setModel(1);
-        bearCarEntity.setSelected(1);
-        bearCarEntity.setUuid(1);
-        Log.d("MainActivity", "carEntities:" + carEntities);
-        carEntities.add(bearCarEntity);
-        return carEntities;
-    }
+//    public List<BearCarEntity> setCarEntities() {
+//        BearCarEntity bearCarEntity = new BearCarEntity(1);
+//        bearCarEntity.setName("123");
+//        bearCarEntity.setModel(1);
+//        bearCarEntity.setSelected(1);
+//        bearCarEntity.setUuid(1);
+//        Log.d("MainActivity", "carEntities:" + carEntities);
+//        carEntities.add(bearCarEntity);
+//        return carEntities;
+//    }
 
 
     //加载popuwindow的方法
     private void showPoPuWindow() {
-        setCarEntities();
+//        setCarEntities();
         //视图加载
         View contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.item_popuwindow, null);
         //设置长宽度
         listView = (ListView) contentView.findViewById(R.id.list_popuwindow);
         popuwindow = new PopupWindow(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        //加载视图
+        //加载popuwindow视图
         popuwindow.setContentView(contentView);
         popuwindow.showAsDropDown(rightCircler, 0, -20, Gravity.RIGHT);
         carEntities = DataBaseTool.getInstance().queryCars();
@@ -173,13 +164,13 @@ public class MainActivity extends BaseActivity {
             BearCarEntity bearCarEntity = new BearCarEntity(50);
             bearCarEntity.setName("车辆管理");
             carEntities.add(bearCarEntity);
-            poPuWindowListAdapter.setCarEntities(carEntities);
-
+            popuWindowListAdapter.setCarEntities(carEntities);
         }
         Log.d("xxx", "carEntities.size():" + carEntities.size());
-        Log.d("MainActivity", "poPuWindowListAdapter:" + poPuWindowListAdapter);
+        Log.d("MainActivity", "popuWindowListAdapter:" + popuWindowListAdapter);
         Log.d("MainActivity", "listView:" + listView);
-        listView.setAdapter(poPuWindowListAdapter);
+        listView.setAdapter(popuWindowListAdapter);
+        //id = 50 弹出dialog
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -211,30 +202,27 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-//                popuwindow.dismiss();
             }
         });
         dialog.setView(customDialogView);
         dialogListViewAdapter.setOnDelClickListener(new DialogListViewAdapter.OnDelClickListener() {
             @Override
             public void onDelClick(BearCarEntity car) {
+
                 customDialog(car);
             }
         });
+        carEntities = DataBaseTool.getInstance().queryCars();
         dialogListViewAdapter.setDialogListViewAdapter(carEntities);
         addListView.setAdapter(dialogListViewAdapter);
         addListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//               Intent intent = new Intent(MainActivity.this,)
 
             }
         });
         dialog.show();
-
         addIV.setOnClickListener(this);
-
-
     }
 
     private void customDialog(final BearCarEntity car) {
@@ -243,15 +231,15 @@ public class MainActivity extends BaseActivity {
         DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
                 switch (which) {
                     case DialogInterface.BUTTON_NEGATIVE:
                         int id = car.getId();
                         String name = car.getName();
                         DataBaseTool.getInstance().removeCar(id);
+                        dialogListViewAdapter.getData().remove(car);
+                        dialogListViewAdapter.notifyDataSetChanged();
                         Toast.makeText(MainActivity.this, "删除:" + String.valueOf(name), Toast.LENGTH_SHORT).show();
                         break;
-
                     case DialogInterface.BUTTON_NEUTRAL:
                         Toast.makeText(MainActivity.this, "取消", Toast.LENGTH_SHORT).show();
                         break;
@@ -262,22 +250,44 @@ public class MainActivity extends BaseActivity {
 
         builder.setIcon(R.mipmap.notice_board_warn)
                 .setTitle("删除车辆")
-//                .setMessage("删除将不可恢复。\n您确定删除" + myCar.getName() + "，以及它的所有油耗数据吗？")
                 .setNegativeButton("确定", onClickListener)
                 .setNeutralButton("取消", onClickListener)
                 .create()
                 .show();
 
-    }
 
+    }
     //侧拉菜单的加载方法
     private void pull() {
-        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+      drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        //
+        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+
+        });
+
         drawerLayout.openDrawer(Gravity.LEFT);
     }
 
     @Override
-
     public void onClick(View view) {
 
         switch (view.getId()) {
@@ -293,11 +303,43 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.imageView:
                 Intent intentCar = new Intent(MainActivity.this, UpdateActivity.class);
-                startActivity(intentCar);
+                startActivityForResult(intentCar,100);
                 break;
             case R.id.share_iv:
+                    //第三方分享
+                new ShareAction(MainActivity.this).withText("hello")
+                        .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN)
+                        .setCallback(umShareListener).open();
+                UMImage image = new UMImage(MainActivity.this, R.drawable.umeng_socialize_share_music);
+
+                UMImage thumb =  new UMImage(this, R.drawable.umeng_socialize_share_music);
+                image.setThumb(thumb);
+
+                new ShareAction(MainActivity.this).withText("hello")
+                        .withMedia(image).share();
+                break;
         }
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+            switch (resultCode){
+                case 202:
+                    Toast.makeText(MainActivity.this, "wqwerewqwe", Toast.LENGTH_SHORT).show();
+                    carEntities =DataBaseTool.getInstance().queryCars();
+                    popuWindowListAdapter.setCarEntities(carEntities);
+                    Log.d("MainActivity", "站在草原望北京:" + carEntities);
+                    listView.setAdapter(popuWindowListAdapter);
+                    dialogListViewAdapter.setDialogListViewAdapter(carEntities);
+                    addListView.setAdapter(dialogListViewAdapter);
+                    break;
+
+            }//法拉利911
+
+    }
+
+
 
 //
 //    public void request(){
@@ -321,5 +363,30 @@ public class MainActivity extends BaseActivity {
 //        Call<CarInformationEntity>carSeries = service.getSeries();
 //    }
 
+    private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            //分享开始的回调
+        }
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Log.d("plat","platform"+platform);
 
+            Toast.makeText(MainActivity.this, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(MainActivity.this,platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+            if(t!=null){
+                Log.d("throw","throw:"+t.getMessage());
+            }
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(MainActivity.this,platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
+    };
 }

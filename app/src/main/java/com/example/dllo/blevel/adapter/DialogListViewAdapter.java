@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.blevel.R;
-import com.example.dllo.blevel.activity.MainActivity;
 import com.example.dllo.blevel.entity.BearCarEntity;
 import com.example.dllo.blevel.interfacep.ViewOnclick;
 
@@ -41,12 +40,13 @@ public class DialogListViewAdapter extends BaseAdapter implements ViewOnclick{
         notifyDataSetInvalidated();
     }
 
-
-
+//便于删除
+    public List<BearCarEntity> getData(){
+        return  carEntities;
+    }
 
     public void setDialogListViewAdapter(List<BearCarEntity> carEntities) {
         this.carEntities = carEntities;
-
         notifyDataSetChanged();
         
 
@@ -55,16 +55,18 @@ public class DialogListViewAdapter extends BaseAdapter implements ViewOnclick{
     @Override
 
     public int getCount() {
-        return carEntities.size();
+        return carEntities == null ? 0:carEntities.size();
     }
 
     @Override
     public Object getItem(int position) {
+        //为listview绑定一个实体类
         return carEntities.get(position);
     }
 
     @Override
     public long getItemId(int position) {
+        //为listview的每一行绑定一个id，
         return position;
     }
 
@@ -81,9 +83,7 @@ public class DialogListViewAdapter extends BaseAdapter implements ViewOnclick{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-//        if (position == 0) {
-//            holder.tv.setText("我的小车");
-//        }
+
         holder.iv.setTag(carEntities.get(position));
         holder.iv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,13 +103,9 @@ public class DialogListViewAdapter extends BaseAdapter implements ViewOnclick{
 //        });
         return convertView;
     }
-
-
     @Override
     public void click(View view, int position) {
-
     }
-
     class ViewHolder {
         TextView tv;
         ImageView iv; //删除

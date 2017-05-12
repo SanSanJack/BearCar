@@ -1,12 +1,8 @@
-package com.example.dllo.blevel.view;
+package com.example.dllo.blevel.sql;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-/**
- * If the code is not wrong its author is JokerCats.
- */
 
 class CarSQLiteHelper extends SQLiteOpenHelper {
 

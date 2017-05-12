@@ -15,27 +15,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class HttpManager {
-
     private Retrofit mRetrofit;
     private BearService mCarServcie;
-
     private static final AtomicReference<HttpManager> INSTANCE = new AtomicReference<>();
-
     public static HttpManager getInstance() {
-
         for (; ; ) {
             HttpManager current = INSTANCE.get();
             if (current != null) {
                 return current;
             }
-
             current = new HttpManager();
             if (INSTANCE.compareAndSet(null, current)) {
                 return current;
             }
         }
     }
-
     private HttpManager() {
         //  创建Retrofit对象
         mRetrofit = new Retrofit.Builder()
@@ -47,7 +41,6 @@ public class HttpManager {
                 .build();
         mCarServcie = mRetrofit.create(BearService.class);
     }
-
     public BearService getService(){
         return mCarServcie;
     }

@@ -3,6 +3,9 @@ package com.example.dllo.blevel.application;
 import android.app.Application;
 import android.content.Context;
 
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
+
 /**
  * Created by dllo on 17/4/17.
  */
@@ -20,6 +23,8 @@ public class BearApplication extends Application {
         super.onCreate();
         // 对Context进行赋值
         sContext = this;
+        UMShareAPI.get(this);
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
     }
 
     // 向外界提供一个getContext方法
